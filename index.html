@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 TreeMendous Deals - BEST CHRISTMAS TREES EVER 🎄</title>
+    <style>
+        * {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text y="15" font-size="15">🎅</text></svg>'), auto;
+        }
+
+        body {
+            background: repeating-linear-gradient(
+                45deg,
+                #ff0000,
+                #ff0000 10px,
+                #00ff00 10px,
+                #00ff00 20px
+            );
+            font-family: 'Comic Sans MS', cursive;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            animation: backgroundPulse 1s infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+            50% { filter: hue-rotate(90deg) brightness(1.5); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-10px, -10px); }
+            20% { transform: translate(10px, 10px); }
+            30% { transform: translate(-10px, 10px); }
+            40% { transform: translate(10px, -10px); }
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            16% { color: orange; }
+            32% { color: yellow; }
+            48% { color: green; }
+            64% { color: blue; }
+            80% { color: indigo; }
+            100% { color: violet; }
+        }
+
+        @keyframes snow {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            z-index: 9999;
+            font-size: 30px;
+            animation: snow linear infinite;
+            pointer-events: none;
+        }
+
+        header {
+            background: linear-gradient(90deg, red, green, red, green);
+            padding: 30px;
+            text-align: center;
+            animation: shake 0.5s infinite;
+        }
+
+        h1 {
+            font-size: 72px;
+            animation: rainbow 2s infinite, blink 0.5s infinite;
+            text-shadow: 5px 5px 10px black, -5px -5px 10px white;
+            margin: 0;
+        }
+
+        marquee {
+            background: yellow;
+            color: red;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .product {
+            background: white;
+            border: 10px dashed red;
+            margin: 20px;
+            padding: 20px;
+            display: inline-block;
+            width: calc(33% - 80px);
+            vertical-align: top;
+            animation: rotate 3s infinite linear;
+            box-shadow: 0 0 50px 10px lime;
+        }
+
+        .product img {
+            width: 100%;
+            animation: shake 0.3s infinite;
+        }
+
+        .product h2 {
+            font-size: 36px;
+            color: green;
+            text-decoration: underline overline;
+            animation: blink 1s infinite;
+        }
+
+        .price {
+            font-size: 48px;
+            color: red;
+            font-weight: bold;
+            animation: rainbow 1s infinite;
+        }
+
+        .buy-btn {
+            background: linear-gradient(45deg, red, yellow, lime, cyan, blue, magenta, red);
+            background-size: 400% 400%;
+            color: white;
+            font-size: 32px;
+            padding: 20px 40px;
+            border: 5px solid gold;
+            animation: blink 0.3s infinite, backgroundPulse 2s infinite;
+            font-family: 'Comic Sans MS', cursive;
+            font-weight: bold;
+            text-shadow: 3px 3px black;
+            position: relative;
+        }
+
+        .buy-btn:hover {
+            animation: shake 0.1s infinite;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: yellow;
+            border: 10px solid red;
+            padding: 40px;
+            z-index: 10000;
+            font-size: 28px;
+            animation: shake 0.5s infinite;
+            display: none;
+            box-shadow: 0 0 100px 50px rgba(255, 0, 0, 0.8);
+        }
+
+        .close-popup {
+            background: red;
+            color: white;
+            border: 5px solid green;
+            padding: 10px 20px;
+            font-size: 24px;
+            font-family: 'Comic Sans MS', cursive;
+            animation: blink 0.5s infinite;
+        }
+
+        .visitor-counter {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: black;
+            color: lime;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 20px;
+            border: 5px solid lime;
+            animation: blink 2s infinite;
+        }
+
+        .construction {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            animation: rotate 2s infinite linear;
+            z-index: 9999;
+        }
+
+        .testimonial {
+            background: cyan;
+            border: 5px solid magenta;
+            margin: 20px;
+            padding: 20px;
+            font-size: 20px;
+            transform: rotate(-5deg);
+            animation: shake 2s infinite;
+        }
+
+        #cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            font-size: 20px;
+        }
+
+        .flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 10001;
+            display: none;
+            animation: blink 0.1s;
+        }
+
+        .cart-count {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: red;
+            color: yellow;
+            font-size: 48px;
+            padding: 20px;
+            border: 10px solid green;
+            animation: blink 0.5s infinite;
+            z-index: 9999;
+        }
+
+        blink {
+            animation: blink 0.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA" type="audio/mpeg">
+    </audio>
+
+    <div class="flash" id="flash"></div>
+
+    <div class="cart-count" id="cartCount" onclick="showCart()" style="cursor: pointer;">🛒 CART: <span id="cartNum">0</span></div>
+
+    <div class="popup" id="cartPopup" style="display: none; z-index: 10001;">
+        <h2 style="animation: rainbow 1s infinite;">YOUR CART</h2>
+        <div id="cartContents" style="margin: 20px 0;">
+            <p style="font-size: 18px;">Cart is empty! Buy some trees!</p>
+        </div>
+        <div id="cartTotal" style="font-size: 28px; margin: 20px 0; font-weight: bold;">
+            TOTAL: $0.00
+        </div>
+        <div style="background: yellow; border: 3px solid red; padding: 15px; margin: 20px 0;">
+            <label style="font-size: 16px; display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="cardSurcharge" onchange="updateCart()" style="width: 30px; height: 30px; margin-right: 10px;">
+                <span>Pay by card? (100% surcharge applies)</span>
+            </label>
+            <p style="font-size: 12px; margin-top: 10px; color: red;">
+                We accept: Diners Club, JCB, Discover, Carte Bleue, Solo, Maestro (UK only), and Laser Card
+            </p>
+        </div>
+        <button class="close-popup" onclick="checkout()">CHECKOUT (maybe)</button>
+        <button class="close-popup" onclick="closeCart()" style="margin-left: 10px; background: green;">CLOSE</button>
+    </div>
+
+    <div class="popup" id="checkoutPopup" style="display: none; z-index: 10002;">
+        <h2 style="animation: rainbow 1s infinite;">SECURE CHECKOUT 🔒</h2>
+        <p style="font-size: 14px; color: red; animation: blink 1s infinite;">⚠️ This is a TOTALLY SECURE form! Trust us! ⚠️</p>
+
+        <form style="text-align: left; margin: 20px 0;">
+            <div style="margin: 15px 0;">
+                <label style="font-size: 16px;">Card Type:</label><br>
+                <select id="cardType" style="width: 100%; padding: 10px; font-size: 16px; margin-top: 5px; font-family: 'Comic Sans MS', cursive;">
+                    <option value="">Select Card Type</option>
+                    <option value="diners">Diners Club</option>
+                    <option value="jcb">JCB</option>
+                    <option value="discover">Discover</option>
+                    <option value="carte">Carte Bleue</option>
+                    <option value="solo">Solo</option>
+                    <option value="maestro">Maestro (UK only)</option>
+                    <option value="laser">Laser Card (Ireland)</option>
+                </select>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label style="font-size: 16px;">Card Number:</label><br>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" style="width: 95%; padding: 10px; font-size: 16px; margin-top: 5px; font-family: 'Comic Sans MS', cursive;">
+            </div>
+
+            <div style="margin: 15px 0; display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label style="font-size: 16px;">Expiry:</label><br>
+                    <input type="text" id="cardExpiry" placeholder="MM/YY" style="width: 90%; padding: 10px; font-size: 16px; margin-top: 5px; font-family: 'Comic Sans MS', cursive;">
+                </div>
+                <div style="flex: 1;">
+                    <label style="font-size: 16px;">CVV:</label><br>
+                    <input type="text" id="cardCVV" placeholder="123" style="width: 90%; padding: 10px; font-size: 16px; margin-top: 5px; font-family: 'Comic Sans MS', cursive;">
+                </div>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label style="font-size: 16px;">Name on Card:</label><br>
+                <input type="text" id="cardName" placeholder="FULL NAME" style="width: 95%; padding: 10px; font-size: 16px; margin-top: 5px; font-family: 'Comic Sans MS', cursive;">
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label style="font-size: 16px;">Billing Address:</label><br>
+                <textarea id="billingAddress" rows="3" placeholder="123 Main St, City, Country" style="width: 95%; padding: 10px; font-size: 16px; margin-top: 5px; font-family: 'Comic Sans MS', cursive;"></textarea>
+            </div>
+
+            <div style="background: yellow; border: 3px solid red; padding: 10px; margin: 15px 0;">
+                <label style="font-size: 14px; display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="termsCheckbox" style="width: 20px; height: 20px; margin-right: 10px;">
+                    <span>I agree to the 47-page Terms & Conditions that I definitely read</span>
+                </label>
+            </div>
+        </form>
+
+        <div id="checkoutTotal" style="font-size: 24px; margin: 20px 0; font-weight: bold; animation: blink 0.5s infinite;">
+            TOTAL: $0.00
+        </div>
+
+        <button class="close-popup" onclick="processPayment()">PAY NOW 💳</button>
+        <button class="close-popup" onclick="closeCheckout()" style="margin-left: 10px; background: orange;">GO BACK</button>
+    </div>
+
+    <header>
+        <h1>🎄🎅 TreeMendous DEALS 🎅🎄</h1>
+        <h2 style="animation: rainbow 1s infinite; font-size: 48px;">BEST CHRISTMAS TREES IN THE UNIVERSE!!!</h2>
+    </header>
+
+    <marquee behavior="scroll" direction="left" scrollamount="20">
+        ⭐ LIMITED TIME OFFER ⭐ BUY NOW OR REGRET FOREVER ⭐ FREE SHIPPING* ⭐ (*shipping not actually free) ⭐
+    </marquee>
+
+    <marquee behavior="scroll" direction="right" scrollamount="15">
+        🎄 OVER 999,999,999 SATISFIED CUSTOMERS!!! 🎄 AS SEEN ON TV*** 🎄 (***not actually on TV) 🎄
+    </marquee>
+
+    <div class="container">
+        <div class="product" id="product1">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300'%3E%3Cpolygon points='100,20 20,280 180,280' fill='green'/%3E%3Crect x='85' y='280' width='30' height='40' fill='brown'/%3E%3Ctext x='100' y='150' font-size='30' text-anchor='middle' fill='red'%3E🎄%3C/text%3E%3C/svg%3E" alt="TREE">
+            <h2>MEGA TREE</h2>
+            <p style="font-size: 24px; color: purple;">This tree is <blink>AMAZING</blink>! It's green! It has needles! It smells like... tree!</p>
+            <div class="price">$<span class="price-value">99</span>.99</div>
+            <button class="buy-btn" onclick="addToCart(1)">🎁 BUY NOW!!! 🎁</button>
+        </div>
+
+        <div class="product" id="product2">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300'%3E%3Cpolygon points='100,20 20,280 180,280' fill='darkgreen'/%3E%3Crect x='85' y='280' width='30' height='40' fill='brown'/%3E%3Ctext x='100' y='150' font-size='30' text-anchor='middle' fill='gold'%3E⭐%3C/text%3E%3C/svg%3E" alt="TREE">
+            <h2>SUPER TREE</h2>
+            <p style="font-size: 18px; color: orange; font-style: italic;">WARNING: This tree is TOO GOOD! Your neighbors will be JEALOUS!!!</p>
+            <div class="price">$<span class="price-value">199</span>.99</div>
+            <button class="buy-btn" onclick="addToCart(2)">💰 SHUT UP AND TAKE MY MONEY 💰</button>
+        </div>
+
+        <div class="product" id="product3">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300'%3E%3Cpolygon points='100,20 20,280 180,280' fill='lime'/%3E%3Crect x='85' y='280' width='30' height='40' fill='brown'/%3E%3Ctext x='100' y='100' font-size='40' text-anchor='middle'%3E👑%3C/text%3E%3C/svg%3E" alt="TREE">
+            <h2>ULTRA PREMIUM DELUXE TREE</h2>
+            <p style="font-size: 28px; color: red; font-weight: bold; text-decoration: underline;">This tree is made from REAL TREE! Act fast! Only 999 left!!!</p>
+            <div class="price">$<span class="price-value">499</span>.99</div>
+            <button class="buy-btn" onclick="addToCart(3)">🚀 I NEED THIS NOW!!! 🚀</button>
+        </div>
+
+        <div class="testimonial">
+            <p style="font-size: 22px;">"This tree changed my life! I was sad, now I'm happy! 11/10 would tree again!" - Definitely Real Person</p>
+        </div>
+
+        <div class="testimonial" style="transform: rotate(3deg); background: lime; border-color: red;">
+            <p style="font-size: 26px;">"I bought 47 trees and my house is now a forest! Best decision ever!!!" - Not Fake Review</p>
+        </div>
+
+        <div class="testimonial" style="transform: rotate(-8deg); background: magenta; border-color: yellow;">
+            <p style="font-size: 18px;">"My cat loves this tree! He climbs it every day and knocks it over! So much fun!" - Tree Lover 3000</p>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <p>🎉🎉🎉 CONGRATULATIONS!!! 🎉🎉🎉</p>
+        <p>You've been randomly selected to receive a SPECIAL OFFER!</p>
+        <p style="font-size: 48px; animation: blink 0.2s infinite;">50% OFF*</p>
+        <p style="font-size: 12px;">*offer not valid, just close this popup</p>
+        <button class="close-popup" onclick="closePopup()">CLOSE (maybe)</button>
+    </div>
+
+    <div class="visitor-counter">
+        👁️ VISITOR #<span id="visitorCount">0</span>
+    </div>
+
+    <div class="construction">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ctext x='50' y='50' font-size='60' text-anchor='middle' dominant-baseline='middle'%3E🚧%3C/text%3E%3C/svg%3E" width="80">
+    </div>
+
+    <div id="cursor-trail"></div>
+
+    <script>
+        // Auto-play "music" - Out of tune recorder version of "We Wish You a Merry Christmas"
+        let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        // "We Wish You a Merry Christmas" - correct notes but TERRIBLY out of tune
+        // C=261.63, D=293.66, E=329.63, F=349.23, G=392, A=440, B=493.88, high C=523.25
+        let merryChristmas = [
+            // "We wish you a mer-ry Christ-mas"
+            { note: 293.66, duration: 350 },   // D
+            { note: 392, duration: 350 },      // G
+            { note: 392, duration: 200 },      // G
+            { note: 440, duration: 350 },      // A
+            { note: 392, duration: 350 },      // G
+            { note: 349.23, duration: 350 },   // F#
+            { note: 329.63, duration: 350 },   // E
+            { note: 329.63, duration: 500 },   // E
+
+            // "We wish you a mer-ry Christ-mas"
+            { note: 329.63, duration: 350 },   // E
+            { note: 440, duration: 350 },      // A
+            { note: 440, duration: 200 },      // A
+            { note: 493.88, duration: 350 },   // B
+            { note: 440, duration: 350 },      // A
+            { note: 392, duration: 350 },      // G
+            { note: 349.23, duration: 350 },   // F#
+            { note: 293.66, duration: 500 },   // D
+
+            // "We wish you a mer-ry Christ-mas"
+            { note: 293.66, duration: 350 },   // D
+            { note: 493.88, duration: 350 },   // B
+            { note: 493.88, duration: 200 },   // B
+            { note: 523.25, duration: 350 },   // C
+            { note: 493.88, duration: 350 },   // B
+            { note: 440, duration: 350 },      // A
+            { note: 349.23, duration: 350 },   // F#
+            { note: 392, duration: 500 },      // G
+
+            // "And a hap-py New Year"
+            { note: 293.66, duration: 350 },   // D
+            { note: 493.88, duration: 350 },   // B
+            { note: 440, duration: 350 },      // A
+            { note: 392, duration: 350 },      // G
+            { note: 349.23, duration: 350 },   // F#
+            { note: 523.25, duration: 350 },   // C
+            { note: 293.66, duration: 700 },   // D
+
+            // Pause before next song
+            { note: 0, duration: 1000 },
+        ];
+
+        // "Jingle Bells" - simplified chorus
+        let jingleBells = [
+            // "Jin-gle bells, jin-gle bells"
+            { note: 329.63, duration: 400 },   // E
+            { note: 329.63, duration: 400 },   // E
+            { note: 329.63, duration: 600 },   // E
+            { note: 329.63, duration: 400 },   // E
+            { note: 329.63, duration: 400 },   // E
+            { note: 329.63, duration: 600 },   // E
+
+            // "jin-gle all the way"
+            { note: 329.63, duration: 400 },   // E
+            { note: 392, duration: 400 },      // G
+            { note: 261.63, duration: 400 },   // C
+            { note: 293.66, duration: 400 },   // D
+            { note: 329.63, duration: 800 },   // E
+
+            // "Oh what fun it is to ride"
+            { note: 349.23, duration: 400 },   // F
+            { note: 349.23, duration: 400 },   // F
+            { note: 349.23, duration: 400 },   // F
+            { note: 349.23, duration: 400 },   // F
+            { note: 349.23, duration: 400 },   // F
+            { note: 329.63, duration: 400 },   // E
+            { note: 329.63, duration: 400 },   // E
+
+            // "in a one horse o-pen sleigh"
+            { note: 329.63, duration: 200 },   // E
+            { note: 293.66, duration: 400 },   // D
+            { note: 293.66, duration: 400 },   // D
+            { note: 329.63, duration: 400 },   // E
+            { note: 293.66, duration: 400 },   // D
+            { note: 392, duration: 800 },      // G
+
+            // Pause before switching songs
+            { note: 0, duration: 1000 },
+        ];
+
+        let currentSong = merryChristmas;
+        let songNames = ['We Wish You a Merry Christmas', 'Jingle Bells'];
+        let currentSongIndex = 0;
+
+        function playNote(frequency, duration, isOutOfTune = true) {
+            if (frequency === 0) return; // Rest
+
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+
+            oscillator.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            // Random detuning to make it sound like a bad recorder player
+            let detune = 0;
+            if (isOutOfTune) {
+                detune = (Math.random() - 0.5) * 15; // Smaller pitch variation - more recognizable
+                // Sometimes miss the note (but less often and less severe)
+                if (Math.random() > 0.92) {
+                    detune = (Math.random() - 0.5) * 50;
+                }
+            }
+
+            oscillator.frequency.value = frequency;
+            oscillator.detune.value = detune;
+
+            // Sawtooth wave sounds more like a recorder (harsh/breathy)
+            oscillator.type = 'sawtooth';
+
+            // Low-pass filter to make it sound more recorder-like
+            filter.type = 'lowpass';
+            filter.frequency.value = 2000 + Math.random() * 1000; // Random filter freq
+            filter.Q.value = 5;
+
+            // Random volume variations (inconsistent breath support)
+            const volume = 0.15 + Math.random() * 0.1;
+            gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+
+            // Add some "breath noise" at the start
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.05);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration / 1000);
+
+            // Occasional squeaks on high notes
+            if (frequency > 400 && Math.random() > 0.7) {
+                setTimeout(() => {
+                    const squeak = audioContext.createOscillator();
+                    const squeakGain = audioContext.createGain();
+                    squeak.connect(squeakGain);
+                    squeakGain.connect(audioContext.destination);
+                    squeak.frequency.value = frequency * 2;
+                    squeak.type = 'sine';
+                    squeakGain.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    squeakGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+                    squeak.start(audioContext.currentTime);
+                    squeak.stop(audioContext.currentTime + 0.05);
+                }, Math.random() * 50);
+            }
+        }
+
+        let noteIndex = 0;
+        let currentTime = 0;
+
+        function playNextNote() {
+            const note = currentSong[noteIndex];
+            playNote(note.note, note.duration);
+
+            // Mostly accurate timing, with occasional hiccups (like a kid who occasionally rushes or drags)
+            let timing = note.duration;
+            if (Math.random() > 0.85) {
+                // Occasionally off-time
+                timing += (Math.random() - 0.5) * 80;
+            }
+
+            noteIndex++;
+
+            // When song ends, switch to the other song
+            if (noteIndex >= currentSong.length) {
+                noteIndex = 0;
+                currentSongIndex = (currentSongIndex + 1) % 2;
+                currentSong = currentSongIndex === 0 ? merryChristmas : jingleBells;
+
+                // Show which song is playing (for maximum annoyance!)
+                console.log('🎵 NOW PLAYING: ' + songNames[currentSongIndex] + ' 🎵');
+            }
+
+            setTimeout(playNextNote, timing);
+        }
+
+        // Start playing after a moment
+        setTimeout(() => {
+            playNextNote();
+        }, 1000);
+
+        // Create snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = ['❄️', '⛄', '🎅', '🎄', '⭐'][Math.floor(Math.random() * 5)];
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 100);
+
+        // Visitor counter
+        let visitors = Math.floor(Math.random() * 999999);
+        setInterval(() => {
+            visitors += Math.floor(Math.random() * 10);
+            document.getElementById('visitorCount').textContent = visitors;
+        }, 100);
+
+        // Random price changes
+        setInterval(() => {
+            document.querySelectorAll('.price-value').forEach(price => {
+                const currentPrice = parseInt(price.textContent);
+                const change = Math.floor(Math.random() * 100) - 50;
+                price.textContent = Math.max(1, currentPrice + change);
+            });
+        }, 2000);
+
+        // Popup spam
+        let popupCount = 0;
+        setInterval(() => {
+            if (popupCount < 50) {
+                document.getElementById('popup').style.display = 'block';
+                popupCount++;
+            }
+        }, 5000);
+
+        function closePopup() {
+            if (Math.random() > 0.3) {
+                alert('Are you SURE you want to close this amazing offer?');
+                if (Math.random() > 0.5) {
+                    document.getElementById('popup').style.display = 'none';
+                } else {
+                    alert('Too bad! Just kidding, you can close it now.');
+                    document.getElementById('popup').style.display = 'none';
+                }
+            } else {
+                alert('Nice try! Click again!');
+            }
+        }
+
+        // Shopping cart
+        let cartItems = [];
+        let productPrices = { 1: 99.99, 2: 199.99, 3: 499.99 };
+        let productNames = { 1: 'MEGA TREE', 2: 'SUPER TREE', 3: 'ULTRA PREMIUM DELUXE TREE' };
+
+        function addToCart(productId) {
+            // Flash effect
+            document.getElementById('flash').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('flash').style.display = 'none';
+            }, 100);
+
+            if (confirm('Are you ABSOLUTELY SURE you want to add this AMAZING tree to your cart?')) {
+                if (confirm('Like, REALLY sure? This is a big commitment!')) {
+                    if (confirm('Last chance! Are you ready for this level of tree ownership?')) {
+                        if (Math.random() > 0.5) {
+                            alert('SUCCESS! Item added to cart!');
+                            cartItems.push(productId);
+                            document.getElementById('cartNum').textContent = cartItems.length;
+                            updateCart();
+
+                            // Sometimes remove items
+                            setTimeout(() => {
+                                if (Math.random() > 0.7 && cartItems.length > 0) {
+                                    alert('Oops! Item removed from cart due to... reasons!');
+                                    cartItems.pop();
+                                    document.getElementById('cartNum').textContent = cartItems.length;
+                                    updateCart();
+                                }
+                            }, 3000);
+                        } else {
+                            alert('ERROR: Tree is temporarily out of stock! Please try again in 3 seconds!');
+                        }
+                    } else {
+                        alert('Wise choice! But you\'re missing out!!!');
+                    }
+                }
+            }
+        }
+
+        function showCart() {
+            updateCart();
+            document.getElementById('cartPopup').style.display = 'block';
+        }
+
+        function closeCart() {
+            document.getElementById('cartPopup').style.display = 'none';
+        }
+
+        function checkout() {
+            if (cartItems.length === 0) {
+                alert('Your cart is empty! Add some trees first!');
+                return;
+            }
+
+            // Calculate total for checkout
+            let subtotal = 0;
+            cartItems.forEach(productId => {
+                subtotal += productPrices[productId];
+            });
+
+            const cardSurcharge = document.getElementById('cardSurcharge').checked;
+            let total = subtotal;
+            if (cardSurcharge) {
+                total += subtotal; // 100% surcharge
+            }
+
+            document.getElementById('checkoutTotal').innerHTML = `TOTAL: $${total.toFixed(2)}`;
+
+            // Close cart and open checkout
+            document.getElementById('cartPopup').style.display = 'none';
+            document.getElementById('checkoutPopup').style.display = 'block';
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutPopup').style.display = 'none';
+            document.getElementById('cartPopup').style.display = 'block';
+        }
+
+        function processPayment() {
+            const cardType = document.getElementById('cardType').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cardExpiry = document.getElementById('cardExpiry').value;
+            const cardCVV = document.getElementById('cardCVV').value;
+            const cardName = document.getElementById('cardName').value;
+            const billingAddress = document.getElementById('billingAddress').value;
+            const termsAccepted = document.getElementById('termsCheckbox').checked;
+
+            // Validate (but in the worst possible way)
+            if (!cardType) {
+                alert('ERROR: Please select a card type from our extensive list of supported cards!');
+                return;
+            }
+
+            if (!cardNumber) {
+                alert('ERROR: Card number is required!');
+                return;
+            }
+
+            if (cardNumber.length < 13) {
+                alert('ERROR: Invalid card number! Are you SURE this is a real ' + cardType.toUpperCase() + ' card?');
+                return;
+            }
+
+            if (!cardExpiry) {
+                alert('ERROR: Expiry date is required!');
+                return;
+            }
+
+            if (!cardCVV) {
+                alert('ERROR: CVV is required for security purposes!');
+                return;
+            }
+
+            if (cardCVV.length !== 3) {
+                alert('ERROR: CVV must be exactly 3 digits! No more, no less!');
+                return;
+            }
+
+            if (!cardName) {
+                alert('ERROR: Name on card is required!');
+                return;
+            }
+
+            if (!billingAddress) {
+                alert('ERROR: Billing address is required!');
+                return;
+            }
+
+            if (!termsAccepted) {
+                alert('ERROR: You must agree to our 47-page Terms & Conditions that you definitely read all the way through!');
+                return;
+            }
+
+            // Random chance of rejection
+            if (Math.random() > 0.6) {
+                const errors = [
+                    'PAYMENT DECLINED: Your bank does not recognize this as a valid ' + cardType + ' card!',
+                    'PAYMENT DECLINED: Insufficient funds! (Just kidding, we have no idea)',
+                    'PAYMENT DECLINED: This card is not supported in your region!',
+                    'ERROR: Payment gateway timed out! Please try again later!',
+                    'PAYMENT DECLINED: Fraud detected! (This is totally not a scam though)',
+                    'ERROR: Our payment processor is currently down. Try again in 5 minutes!',
+                    'PAYMENT DECLINED: Card number has too many numbers!',
+                ];
+                alert(errors[Math.floor(Math.random() * errors.length)]);
+                return;
+            }
+
+            // Success!
+            alert('🎉 PAYMENT SUCCESSFUL! 🎉\n\nYour trees will be delivered in 6-8 weeks!\n\n(Just kidding, this is a fake website!)');
+
+            // Clear cart
+            cartItems = [];
+            document.getElementById('cartNum').textContent = '0';
+
+            // Close checkout
+            document.getElementById('checkoutPopup').style.display = 'none';
+
+            // Reset form
+            document.getElementById('cardType').value = '';
+            document.getElementById('cardNumber').value = '';
+            document.getElementById('cardExpiry').value = '';
+            document.getElementById('cardCVV').value = '';
+            document.getElementById('cardName').value = '';
+            document.getElementById('billingAddress').value = '';
+            document.getElementById('termsCheckbox').checked = false;
+        }
+
+        function updateCart() {
+            const cartContents = document.getElementById('cartContents');
+            const cartTotal = document.getElementById('cartTotal');
+            const cardSurcharge = document.getElementById('cardSurcharge').checked;
+
+            if (cartItems.length === 0) {
+                cartContents.innerHTML = '<p style="font-size: 18px;">Cart is empty! Buy some trees!</p>';
+                cartTotal.innerHTML = 'TOTAL: $0.00';
+                return;
+            }
+
+            let html = '<div style="text-align: left;">';
+            let subtotal = 0;
+
+            cartItems.forEach((productId, index) => {
+                const price = productPrices[productId];
+                subtotal += price;
+                html += `<p style="font-size: 16px; margin: 10px 0;">
+                    ${index + 1}. ${productNames[productId]} - $${price.toFixed(2)}
+                </p>`;
+            });
+
+            html += '</div>';
+            cartContents.innerHTML = html;
+
+            let total = subtotal;
+            let totalHtml = `<div style="text-align: left;">
+                <p>Subtotal: $${subtotal.toFixed(2)}</p>`;
+
+            if (cardSurcharge) {
+                const surcharge = subtotal;
+                total += surcharge;
+                totalHtml += `<p style="color: red;">Card Surcharge (100%): +$${surcharge.toFixed(2)}</p>`;
+            }
+
+            totalHtml += `<p style="font-size: 32px; animation: blink 0.5s infinite;">TOTAL: $${total.toFixed(2)}</p>
+            </div>`;
+
+            cartTotal.innerHTML = totalHtml;
+        }
+
+        // Make buttons run away on hover
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function(e) {
+                if (Math.random() > 0.7) {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    this.style.position = 'fixed';
+                    this.style.left = x + 'px';
+                    this.style.top = y + 'px';
+                }
+            });
+        });
+
+        // Cursor trail
+        let trails = [];
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.style.position = 'fixed';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.pointerEvents = 'none';
+            trail.style.zIndex = '9998';
+            trail.style.fontSize = '20px';
+            trail.innerHTML = ['❄️', '⭐', '🎄', '🎁'][Math.floor(Math.random() * 4)];
+            document.body.appendChild(trail);
+
+            trails.push(trail);
+            if (trails.length > 20) {
+                const old = trails.shift();
+                old.remove();
+            }
+        });
+
+        // Random alerts
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                alert('🎉 FLASH SALE! Everything is... the same price! 🎉');
+            }
+        }, 3000);
+
+        // Scroll hijacking
+        let scrollAmount = 0;
+        window.addEventListener('scroll', () => {
+            if (Math.random() > 0.9) {
+                window.scrollTo(0, Math.random() * document.body.scrollHeight);
+            }
+        });
+
+        // Page title changes
+        const titles = [
+            '🎄 BUY TREES NOW!!!',
+            '🎅 BEST DEALS EVER!!!',
+            '⭐ DONT MISS OUT!!!',
+            '🎁 CHRISTMAS TREES!!!',
+            '❄️ MEGA SALE!!!'
+        ];
+        setInterval(() => {
+            document.title = titles[Math.floor(Math.random() * titles.length)];
+        }, 1000);
+
+        // Prevent leaving
+        window.addEventListener('beforeunload', (e) => {
+            e.preventDefault();
+            e.returnValue = 'Are you SURE you want to leave the BEST Christmas tree website???';
+            return e.returnValue;
+        });
+
+        // Console spam
+        setInterval(() => {
+            console.log('🎄 MERRY CHRISTMAS! 🎄 BUY OUR TREES! 🎄');
+        }, 100);
+
+        // Initial popup
+        setTimeout(() => {
+            document.getElementById('popup').style.display = 'block';
+        }, 2000);
+    </script>
+</body>
+</html>
