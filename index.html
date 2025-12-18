@@ -632,6 +632,34 @@
             }
         }, 5000);
 
+        // Random cart chaos - add or remove items every 5 seconds
+        setInterval(() => {
+            if (Math.random() > 0.5) {
+                // Add a random tree
+                const randomProduct = Math.floor(Math.random() * 3) + 1;
+                cartItems.push(randomProduct);
+                document.getElementById('cartNum').textContent = cartItems.length;
+                updateCart();
+
+                // Show notification
+                if (Math.random() > 0.7) {
+                    alert('🎄 SURPRISE! We added a ' + productNames[randomProduct] + ' to your cart! You\'re welcome!');
+                }
+            } else if (cartItems.length > 0) {
+                // Remove a random item
+                const removedIndex = Math.floor(Math.random() * cartItems.length);
+                const removedProduct = cartItems[removedIndex];
+                cartItems.splice(removedIndex, 1);
+                document.getElementById('cartNum').textContent = cartItems.length;
+                updateCart();
+
+                // Show notification
+                if (Math.random() > 0.7) {
+                    alert('😢 Oops! A ' + productNames[removedProduct] + ' was removed from your cart! Someone else bought it!');
+                }
+            }
+        }, 5000);
+
         function closePopup() {
             if (Math.random() > 0.3) {
                 alert('Are you SURE you want to close this amazing offer?');
